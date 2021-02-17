@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
+import s from './ContactForm.module.css';
 
 import { v4 as uuid } from 'uuid';
 
@@ -51,34 +52,34 @@ class ContactForm extends Component {
   render() {
     const { name, number } = this.state;
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          <p>
-            <b>Name</b>
-          </p>
-          <br />
-          <input
-            type="text"
-            value={name}
-            name="name"
-            onChange={this.handleInputChange}
-          />
-        </label>
-        <br />
-        <label>
-          <p>
-            <b>Number</b>
-          </p>
-          <br />
-          <input
-            type="tel"
-            value={number}
-            name="number"
-            onChange={this.handleInputChange}
-          />
-        </label>
-        <br />
-        <button type="submit">Add contact</button>
+      <form className={s.form} onSubmit={this.handleSubmit}>
+        <section className={s.sectionName}>
+          <label className={s.label}>
+            <p className={s.inputTitle}>Name</p>
+            <input
+              className={s.input}
+              type="text"
+              value={name}
+              name="name"
+              onChange={this.handleInputChange}
+            />
+          </label>
+        </section>
+        <section className={s.sectionNumber}>
+          <label className={s.label}>
+            <p className={s.inputTitle}>Number</p>
+            <input
+              className={s.input}
+              type="tel"
+              value={number}
+              name="number"
+              onChange={this.handleInputChange}
+            />
+          </label>
+        </section>
+        <button className={s.button} type="submit">
+          Add contact
+        </button>
       </form>
     );
   }

@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import ContactForm from './components/ContactForm';
 import ContactList from './components/ContactList';
 import Filter from './components/Filter';
+import s from './App.module.css';
 
 class App extends Component {
   state = {
@@ -60,15 +61,17 @@ class App extends Component {
     const { filter } = this.state;
     const visibleContacts = this.getVisibleContacts();
     return (
-      <div>
-        <h1>Phonebook</h1>
+      <div className={s.page}>
+        <h1 className={s.phoneBookTitle}>Phonebook</h1>
         <ContactForm
           onAdd={this.handleAddContact}
           onCheckUnique={this.handleCheckUnique}
         />
 
-        <h2>Contacts</h2>
-        <Filter filter={filter} onChange={this.handleFilterChange} />
+        <div className={s.findContacts}>
+          <h2 className={s.findContactsTitle}>Find contacts</h2>
+          <Filter filter={filter} onChange={this.handleFilterChange} />
+        </div>
         <ContactList
           contacts={visibleContacts}
           onRemove={this.handleRemoveContact}
