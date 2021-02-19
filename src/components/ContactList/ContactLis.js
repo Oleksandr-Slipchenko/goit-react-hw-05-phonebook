@@ -1,21 +1,25 @@
 import PropTypes from 'prop-types';
-
-const ContactListItem = ({ id, name, number, onRemove }) => {
-  return (
-    <li>
-      {name}: {number} <button onClick={() => onRemove(id)}>delete</button>
-    </li>
-  );
-};
+import s from './ContactList.module.css';
+import fadeStyles from '../../fadeModules/fadeContactList.module.css';
+import ContactListItem from './ContactListItem';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 const ContactsList = ({ contacts, onRemove }) => {
   if (contacts.length === 0) return null;
   return (
-    <ul>
+    <TransitionGroup component="ul" className={s.contactList}>
       {contacts.map(contact => (
-        <ContactListItem key={contact.id} {...contact} onRemove={onRemove} />
+        <CSSTransition key={contact.id} timeout={250} classNames={fadeStyles}>
+          <ContactListItem {...contact} onRemove={onRemove} />
+        </CSSTransition>
       ))}
-    </ul>
+    </TransitionGroup>
+
+    // <ul className={s.contactList}>
+    //   {contacts.map(contact => (
+    //     <ContactListItem key={contact.id} {...contact} onRemove={onRemove} />
+    //   ))}
+    // </ul>
   );
 };
 
