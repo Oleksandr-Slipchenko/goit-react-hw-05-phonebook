@@ -5,7 +5,7 @@ import ContactListItem from './ContactListItem';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 const ContactsList = ({ contacts, onRemove }) => {
-  if (contacts.length === 0) return null;
+  // if (contacts.length === 0) return null;
   return (
     <TransitionGroup component="ul" className={s.contactList}>
       {contacts.map(contact => (

@@ -104,10 +104,14 @@ class App extends Component {
             <Filter filter={filter} onChange={this.handleFilterChange} />
           </div>
         </CSSTransition>
+        {/* {contacts.length < 1 ? (
+          'Contacts list is empty'
+        ) : ( */}
         <ContactList
           contacts={visibleContacts}
           onRemove={this.handleRemoveContact}
         />
+        {/* )} */}
       </div>
     );
   }
